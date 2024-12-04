@@ -1,60 +1,60 @@
-//Criando classe abstrata de produtos, contendo atributos e definições de métodos.
 public abstract class Produto {
-	private String nome;
-	private double precoCusto;
-	private double precoVenda;
+    private int id;
+    private String nome;
+    private double precoCusto;
+    private double precoVenda;
 
-//Constructor para inicialização dos atributos criados.
-	public Produto(String nome, double precoCusto, double precoVenda) {
-		this.nome = nome;
-		this.precoCusto = precoCusto;
-		this.precoVenda = precoVenda;
-	}
+    // Construtor sem ID (para salvar novos produtos)
+    public Produto(String nome, double precoCusto, double precoVenda) {
+        this.nome = nome;
+        this.precoCusto = precoCusto;
+        this.precoVenda = precoVenda;
+    }
 
-//Método concreto para calcular o lucro de produtos, subtraindo preço de custo do preço de venda.
-	public double lucro() {
-		return
-				precoVenda - precoCusto;
-	}
-	
-//Método abstratos criado mas sem definição.
-	abstract void salvar();
-	abstract void deletar();
-	abstract void atualizar();
-	
-//Encapsulamento para acessar e alterar atributos privados.
-	public String getNome() {
-		return 
-				nome;
-	}
-	
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	
-	public double getPrecoCusto() {
-		return
-				precoCusto;
-	}
-	
-	public void setPrecoCusto(double precoCusto) {
-		this.precoCusto = precoCusto;
-	}
-	
-	public double getPrecoVenda() {
-		return
-				precoVenda;
-	}
-	
-	public void setPrecoVenda(double precoVenda) {
-		this.precoVenda = precoVenda;
-	}
+    // Construtor com ID (para atualizar ou deletar produtos existentes)
+    public Produto(int id, String nome, double precoCusto, double precoVenda) {
+        this.id = id;
+        this.nome = nome;
+        this.precoCusto = precoCusto;
+        this.precoVenda = precoVenda;
+    }
 
-//Método exibição de informações formatadas quando puxadas ao main.
-	public String exibicao() {
-		return
-				"Nome: " + getNome() + "\n" +
-				"Preço de custo: " + getPrecoCusto() + "\n" + 
-				"Preço de venda: " + getPrecoVenda();
-	}
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public double getPrecoCusto() {
+        return precoCusto;
+    }
+
+    public void setPrecoCusto(double precoCusto) {
+        this.precoCusto = precoCusto;
+    }
+
+    public double getPrecoVenda() {
+        return precoVenda;
+    }
+
+    public void setPrecoVenda(double precoVenda) {
+        this.precoVenda = precoVenda;
+    }
+
+    // Métodos abstratos para as operações de CRUD
+    public abstract void salvar();
+
+    public abstract void atualizar();
+
+    public abstract void deletar();
 }
+
+
+
+
